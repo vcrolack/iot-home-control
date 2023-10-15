@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class LoginScreen extends StatelessWidget {
             const Text('Are you forgot your password?'),
             TextButton(onPressed: () {}, child: const Text('Click here'))
           ],
-        )
+        ),
       ]),
     );
   }
@@ -38,6 +39,9 @@ class _LoginForm extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        const SizedBox(
+          height: 50,
+        ),
         const TextField(
           decoration: InputDecoration(
               labelText: 'User',
@@ -45,7 +49,7 @@ class _LoginForm extends StatelessWidget {
               border: OutlineInputBorder()),
         ),
         const SizedBox(
-          height: 16,
+          height: 50,
         ),
         const TextField(
           decoration: InputDecoration(
@@ -54,9 +58,18 @@ class _LoginForm extends StatelessWidget {
               border: OutlineInputBorder()),
         ),
         const SizedBox(
+          height: 50,
+        ),
+        ElevatedButton(onPressed: () {}, child: const Text('Log in')),
+        const SizedBox(
           height: 16,
         ),
-        ElevatedButton(onPressed: () {}, child: const Text('Log in'))
+        const Text('Or'),
+        TextButton(
+            onPressed: () {
+              context.go('/register');
+            },
+            child: const Text('Join us!'))
       ]),
     );
   }
