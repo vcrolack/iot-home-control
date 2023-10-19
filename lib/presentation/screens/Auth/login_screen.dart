@@ -23,7 +23,11 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('Are you forgot your password?'),
-            TextButton(onPressed: () {}, child: const Text('Click here'))
+            TextButton(
+                onPressed: () {
+                  context.go('/auth/password-recovery');
+                },
+                child: const Text('Click here'))
           ],
         ),
       ]),
@@ -67,7 +71,7 @@ class _LoginForm extends StatelessWidget {
         const Text('Or'),
         TextButton(
             onPressed: () {
-              context.go('/register');
+              context.pushReplacement('/auth/register');
             },
             child: const Text('Join us!'))
       ]),
