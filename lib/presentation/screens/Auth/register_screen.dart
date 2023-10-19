@@ -26,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
               const Text('Are you registered?'),
               TextButton(
                   onPressed: () {
-                    context.go('/login');
+                    context.pushReplacement('/auth/login');
                   },
                   child: const Text('Click here'))
             ],

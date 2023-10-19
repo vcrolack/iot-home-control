@@ -17,6 +17,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
         routerConfig: appRouter,
+        // routeInformationParser: appRouter.routeInformationParser,
+        // routerDelegate: appRouter.routerDelegate,
         debugShowCheckedModeBanner: false,
         title: 'IoT Home Control',
         theme: AppTheme().getTheme());
