@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_home_control/presentation/widgets/common/custom_drawer.dart';
 import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,9 +9,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        appBar: _CustomAppBarHome(),
-        body: Stack(
+    final scaffoldKey = GlobalKey<ScaffoldState>();
+    return Scaffold(
+        appBar: const _CustomAppBarHome(),
+        drawer: CustomDrawer(scaffoldKey: scaffoldKey),
+        body: const Stack(
           fit: StackFit.expand,
           children: [
             _HomeView(),

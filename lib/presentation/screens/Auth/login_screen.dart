@@ -24,9 +24,7 @@ class LoginScreen extends StatelessWidget {
           children: [
             const Text('Are you forgot your password?'),
             TextButton(
-                onPressed: () {
-                  context.go('/auth/password-recovery');
-                },
+                onPressed: () => context.go('/auth/password-recovery'),
                 child: const Text('Click here'))
           ],
         ),
@@ -64,15 +62,15 @@ class _LoginForm extends StatelessWidget {
         const SizedBox(
           height: 50,
         ),
-        ElevatedButton(onPressed: () {}, child: const Text('Log in')),
+        ElevatedButton(
+            onPressed: () => context.pushReplacement('/'),
+            child: const Text('Log in')),
         const SizedBox(
           height: 16,
         ),
         const Text('Or'),
         TextButton(
-            onPressed: () {
-              context.pushReplacement('/auth/register');
-            },
+            onPressed: () => context.pushReplacement('/auth/register'),
             child: const Text('Join us!'))
       ]),
     );
