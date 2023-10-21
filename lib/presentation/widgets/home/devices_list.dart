@@ -38,16 +38,14 @@ class DevicesList extends StatelessWidget {
                         child: const Text(
                           'Devices',
                           style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
+                              fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                       );
                     } else if (index == 1) {
                       return IconButton(
                         onPressed: () {},
                         icon: Icon(
-                          Icons.add,
+                          Icons.add_box_rounded,
                           size: 50,
                           color: colors.primary,
                         ),
@@ -67,7 +65,7 @@ class DevicesList extends StatelessWidget {
                         ),
                       );
                     } else {
-                      return SizedBox.shrink();
+                      return const SizedBox.shrink();
                     }
                   }),
             ),

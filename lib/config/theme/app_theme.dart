@@ -8,5 +8,6 @@ class AppTheme {
       fontFamily: 'roboto',
       textTheme: const TextTheme(
           titleLarge: TextStyle(fontSize: 45),
-          titleSmall: TextStyle(fontSize: 15)));
+          titleSmall: TextStyle(fontSize: 15),
+          displaySmall: TextStyle(fontSize: 30)));
 }
