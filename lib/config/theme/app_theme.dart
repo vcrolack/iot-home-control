@@ -4,7 +4,7 @@ class AppTheme {
   ThemeData getTheme() => ThemeData(
       useMaterial3: true,
       colorSchemeSeed: const Color.fromARGB(255, 97, 248, 241),
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       fontFamily: 'roboto',
       textTheme: const TextTheme(
           titleLarge: TextStyle(fontSize: 45),

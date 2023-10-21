@@ -9,7 +9,8 @@ class CustomAppBarAuth extends StatelessWidget implements PreferredSizeWidget {
       {super.key,
       required this.title,
       required this.subtitle,
-      required this.colorsGradient});
+      required this.colorsGradient})
+      : assert(colorsGradient.length == 2, 'The proporty must have 2 colors');
 
   @override
   Widget build(BuildContext context) {

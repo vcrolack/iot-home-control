@@ -10,10 +10,10 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarAuth(
+      appBar: CustomAppBarAuth(
           title: 'Login',
           subtitle: 'Enter your credentials to continue',
-          colorsGradient: [Color(0xffbc9cf7), Color(0xff54bbb9)]),
+          colorsGradient: const [Color(0xffbc9cf7), Color(0xff54bbb9)]),
       body: Column(children: [
         const _LoginForm(),
         const SizedBox(
