@@ -14,4 +14,9 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
       builder: (context, state) => const LoginScreen(),
       // redirect: ((context, state) => '/auth/login'),
       routes: authRoutes),
+  GoRoute(
+    name: ConfigurationScreen.name,
+    path: '/configuration',
+    builder: (context, state) => const ConfigurationScreen(),
+  ),
 ]);

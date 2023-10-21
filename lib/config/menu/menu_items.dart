@@ -24,7 +24,7 @@ final List<MenuItem> appMenuItems = [
   const MenuItem(
     title: "Home",
     subtitle: "General view",
-    link: "/home",
+    link: "/",
     icon: Icons.home_outlined,
   ),
   const MenuItem(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iot_home_control/menu/menu_items.dart';
+import 'package:iot_home_control/config/menu/menu_items.dart';
 
 class CustomDrawer extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -36,23 +36,21 @@ class _CustomDrawerState extends State<CustomDrawer> {
         widget.scaffoldKey.currentState?.closeDrawer();
       },
       children: [
-        Container(
-          child: Column(
-            children: [
-              Icon(
-                Icons.cloud_outlined,
-                size: 100,
-                color: colors.primary,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                'IoT Home Control',
-                style: textStyle.displaySmall,
-              ),
-            ],
-          ),
+        Column(
+          children: [
+            Icon(
+              Icons.cloud_outlined,
+              size: 100,
+              color: colors.primary,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              'IoT Home Control',
+              style: textStyle.displaySmall,
+            ),
+          ],
         ),
         const SizedBox(
           height: 50,
