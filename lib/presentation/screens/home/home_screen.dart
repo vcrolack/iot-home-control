@@ -9,9 +9,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar: _CustomAppBarHome(),
-      body: _HomeView(),
-    );
+        appBar: _CustomAppBarHome(),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            _HomeView(),
+            DevicesList(),
+          ],
+        ));
   }
 }
 
