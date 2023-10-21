@@ -27,33 +27,48 @@ class DevicesList extends StatelessWidget {
             ),
           ),
           child: Column(children: [
-            Container(
-              padding: const EdgeInsets.all(16.0),
-              child: const Text(
-                'Devices',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
             Expanded(
               child: ListView.builder(
                   controller: scrollController,
-                  itemCount: devices.length,
+                  itemCount: devices.length + 2,
                   itemBuilder: (BuildContext context, int index) {
-                    final device = devices[index];
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Column(
-                        children: [
-                          _DeviceItem(device: device, textStyle: textStyle),
-                          const SizedBox(
-                            height: 30,
-                          )
-                        ],
-                      ),
-                    );
+                    if (index == 0) {
+                      return Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: const Text(
+                          'Devices',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      );
+                    } else if (index == 1) {
+                      return IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.add,
+                          size: 50,
+                          color: colors.primary,
+                        ),
+                      );
+                    } else if (index - 2 < devices.length) {
+                      final device =
+                          devices[index - 2]; // -2 para ajustar el índice
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Column(
+                          children: [
+                            _DeviceItem(device: device, textStyle: textStyle),
+                            const SizedBox(
+                              height: 30,
+                            )
+                          ],
+                        ),
+                      );
+                    } else {
+                      return SizedBox.shrink();
+                    }
                   }),
             ),
           ]),
