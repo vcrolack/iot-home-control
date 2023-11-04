@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iot_home_control/domain/entities/device.dart';
 import 'package:iot_home_control/presentation/mocks/constants/devices_constants.dart';
-import 'package:iot_home_control/presentation/mocks/mappers/icon_mapper.dart';
+import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
 class DevicesList extends StatelessWidget {
   const DevicesList({
@@ -57,7 +56,7 @@ class DevicesList extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Column(
                           children: [
-                            _DeviceItem(device: device, textStyle: textStyle),
+                            DeviceItem(device: device, textStyle: textStyle),
                             const SizedBox(
                               height: 30,
                             )
@@ -72,43 +71,6 @@ class DevicesList extends StatelessWidget {
           ]),
         );
       },
-    );
-  }
-}
-
-class _DeviceItem extends StatelessWidget {
-  const _DeviceItem({
-    required this.device,
-    required this.textStyle,
-  });
-
-  final Device device;
-  final TextTheme textStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-            width: MediaQuery.of(context).size.width * .2,
-            height: MediaQuery.of(context).size.height * .1,
-            decoration: BoxDecoration(
-                color: Color(int.parse(device.color)),
-                borderRadius: BorderRadius.circular(20)),
-            child: Icon(
-              iconMapping[device.iconIdentifier],
-              size: 50,
-            )),
-        const SizedBox(
-          width: 10,
-        ),
-        Text(
-          device.name,
-          style: textStyle.titleMedium,
-        ),
-        const Spacer(),
-        FilledButton(onPressed: () {}, child: const Text('See more'))
-      ],
     );
   }
 }

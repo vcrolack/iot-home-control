@@ -8,3 +8,6 @@ export 'home/home_screen.dart';
 
 /* CONFIGURATION EXPORTS */
 export 'configuration/configuration_screen.dart';
+
+/* DEVICES EXPORTS */
+export 'devices/devices_screen.dart';

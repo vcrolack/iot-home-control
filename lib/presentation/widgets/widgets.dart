@@ -5,3 +5,7 @@ export 'auth/custom_appbar_auth.dart';
 export 'home/categories.dart';
 export 'home/search.dart';
 export 'home/devices_list.dart';
+
+/* DEVICES WIDGETS */
+export 'devices/device_box_preview.dart';
+export 'devices/device_list_item.dart';

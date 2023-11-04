@@ -18,4 +18,9 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
       path: '/configuration',
       builder: (context, state) => const ConfigurationScreen(),
       routes: configurationRoutes),
+  GoRoute(
+    name: DevicesScreen.name,
+    path: '/devices',
+    builder: (context, state) => const DevicesScreen(),
+  )
 ]);
