@@ -1,3 +1,8 @@
 export 'category.dart';
-export 'device.dart';
 export 'user_preferences.dart';
+
+/* DEVICE ENTITIES*/
+export 'devices/device.dart'; // Father entity
+export 'devices/pantry.dart';
+export 'devices/light.dart';
+export 'devices/curtain.dart';

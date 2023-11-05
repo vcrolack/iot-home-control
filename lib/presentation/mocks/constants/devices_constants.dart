@@ -1,54 +1,49 @@
 import 'package:iot_home_control/domain/entities/entities.dart';
 
 final List<Device> devices = [
-  Device(
+  Pantry(
       id: '1',
       name: 'Pantry 2.0',
-      type: 'Pantry home',
+      type: 'pantry',
       categoryId: '1',
       description: 'This is a pantry device',
       state: true,
       userId: '1',
-      iconIdentifier: 'kitchen_outlined',
-      color: '0xffB34949'),
-  Device(
+      quantity: 20),
+  Light(
       id: '2',
       name: 'Philips light RGB',
-      type: 'Light home',
+      type: 'light',
       categoryId: '2',
       description: 'This is a light device',
       state: true,
       userId: '1',
-      iconIdentifier: 'light_outlined',
-      color: '0xff459FB3'),
-  Device(
+      brightness: 0.2),
+  Curtain(
       id: '1',
       name: 'Curtain automatic 2.0',
-      type: 'Curtain home',
+      type: 'curtain',
       categoryId: '3',
       description: 'This is a pantry device',
       state: true,
       userId: '1',
-      iconIdentifier: 'curtains_outlined',
-      color: '0xffBDAB4A'),
-  Device(
+      isOpen: true),
+  Pantry(
       id: '1',
       name: 'Pantry 2.0',
-      type: 'Pantry home',
+      type: 'pantry',
       categoryId: '1',
       description: 'This is a pantry device',
       state: true,
       userId: '1',
-      iconIdentifier: 'kitchen_outlined',
-      color: '0xffB34949'),
-  Device(
+      quantity: 20),
+  Pantry(
       id: '1',
       name: 'Pantry 2.0',
-      type: 'Pantry home',
+      type: 'pantry',
       categoryId: '1',
       description: 'This is a pantry device',
       state: true,
       userId: '1',
-      iconIdentifier: 'kitchen_outlined',
-      color: '0xffB34949'),
+      quantity: 10),
 ];
