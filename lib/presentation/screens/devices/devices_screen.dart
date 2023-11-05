@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_home_control/presentation/mappers/device_view_model.dart';
 import 'package:iot_home_control/presentation/mocks/constants/devices_constants.dart';
 import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
@@ -62,7 +63,7 @@ class _FavoritesList extends StatelessWidget {
                 itemCount: 3,
                 itemBuilder: ((context, index) {
                   // todo: create conditional to only shows favorites devices
-                  final device = devices[index];
+                  final device = DeviceViewModel.fromDevice(devices[index]);
                   return SizedBox(
                       height: 110,
                       child: DeviceItem(device: device, textStyle: textStyles));
@@ -85,11 +86,13 @@ class _DevicesListPreview extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 2, // Asume que tienes una lista llamada devices
               itemBuilder: (context, index) {
+                final device = DeviceViewModel.fromDevice(devices[index]);
+
                 return Container(
                     margin: const EdgeInsets.only(right: 5),
                     child: Column(
                       children: [
-                        DeviceBoxPreview(device: devices[index]),
+                        DeviceBoxPreview(device: device),
                         const SizedBox(
                           height: 10,
                         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iot_home_control/domain/entities/entities.dart';
+import 'package:iot_home_control/presentation/mappers/mappers.dart';
 import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
 class DeviceItem extends StatelessWidget {
@@ -9,12 +9,12 @@ class DeviceItem extends StatelessWidget {
     required this.textStyle,
   });
 
-  final Device device;
+  final DeviceViewModel device;
   final TextTheme textStyle;
 
   @override
   Widget build(BuildContext context) {
-    final maxLength = 15;
+    const maxLength = 15;
 
     return Row(
       children: [

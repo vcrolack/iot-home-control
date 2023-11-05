@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iot_home_control/presentation/mappers/mappers.dart';
 import 'package:iot_home_control/presentation/mocks/constants/devices_constants.dart';
 import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
@@ -52,11 +53,12 @@ class DevicesList extends StatelessWidget {
                     } else if (index - 2 < devices.length) {
                       final device =
                           devices[index - 2]; // -2 para ajustar el índice
+                      final deviceUI = DeviceViewModel.fromDevice(device);
                       return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Column(
                           children: [
-                            DeviceItem(device: device, textStyle: textStyle),
+                            DeviceItem(device: deviceUI, textStyle: textStyle),
                             const SizedBox(
                               height: 30,
                             )
