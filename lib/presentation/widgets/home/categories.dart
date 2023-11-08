@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iot_home_control/presentation/mappers/mappers.dart';
 import 'package:iot_home_control/presentation/mocks/constants/categories_constant.dart';
-import 'package:iot_home_control/presentation/mocks/mappers/icon_mapper.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
@@ -15,12 +15,13 @@ class Categories extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: categories.length,
           itemBuilder: ((context, index) {
-            final category = categories[index];
+            final category =
+                CategoryViewModel.fromCategory(categories[index], context);
 
             return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color(int.parse(category.color)),
+                color: category.color,
               ),
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -32,7 +33,7 @@ class Categories extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(iconMapping[category.iconIdentifier]),
+                  icon: Icon(category.icon),
                   iconSize: 80,
                 )
               ]),
