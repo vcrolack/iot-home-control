@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:iot_home_control/domain/entities/entities.dart';
 
-final Map<String, IconData> iconMapping = {
+final Map<String, IconData> _iconMapping = {
   'pantry': Icons.kitchen_outlined,
   'light': Icons.light_outlined,
   'curtain': Icons.curtains_outlined,
 };
 
-final Map<String, Color> colorMapping = {
+final Map<String, Color> _colorMapping = {
   'pantry': const Color(0xffB34949),
   'light': const Color(0xff459FB3),
   'curtain': const Color(0xffBDAB4A)
@@ -43,8 +43,8 @@ class DeviceViewModel {
   }
 
   static IconData getIconForDeviceType(String type) =>
-      iconMapping[type] ?? Icons.question_mark;
+      _iconMapping[type] ?? Icons.question_mark;
 
   static Color getColorForDeviceType(String type) =>
-      colorMapping[type] ?? Colors.white;
+      _colorMapping[type] ?? Colors.white;
 }
