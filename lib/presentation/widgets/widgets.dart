@@ -9,3 +9,6 @@ export 'home/devices_list.dart';
 /* DEVICES WIDGETS */
 export 'devices/device_box_preview.dart';
 export 'devices/device_list_item.dart';
+
+/* ANALYSIS DATA */
+export 'analysis-data/products_counter.dart';
