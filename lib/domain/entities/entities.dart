@@ -1,5 +1,4 @@
 export 'category.dart';
-export 'user_preferences.dart';
 
 /* DEVICE ENTITIES*/
 export 'devices/device.dart'; // Father entity
@@ -9,3 +8,7 @@ export 'devices/curtain.dart';
 
 /* PRODUCT ENTITIES */
 export 'product.dart';
+
+/* USER ENTITIES */
+export 'user.dart';
+export 'user_preferences.dart';
