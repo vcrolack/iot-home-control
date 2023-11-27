@@ -7,13 +7,12 @@ class User {
   final String notifySettings;
   final String cognitoUserId;
 
-  User({
-    required this.id,
-    required this.username,
-    required this.email,
-    required this.password,
-    required this.location,
-    required this.notifySettings,
-    required this.cognitoUserId,
-  });
+  User(
+      {required this.id,
+      required this.username,
+      required this.email,
+      required this.password,
+      required this.location,
+      required this.notifySettings,
+      required this.cognitoUserId});
 }
