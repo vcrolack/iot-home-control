@@ -22,5 +22,10 @@ final appRouter = GoRouter(initialLocation: '/', routes: [
     name: DevicesScreen.name,
     path: '/devices',
     builder: (context, state) => const DevicesScreen(),
-  )
+  ),
+  GoRoute(
+    name: AnalysisDataScreen.name,
+    path: '/analysis',
+    builder: (context, state) => const AnalysisDataScreen(),
+  ),
 ]);

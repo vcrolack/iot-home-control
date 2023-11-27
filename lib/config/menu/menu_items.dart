@@ -39,6 +39,11 @@ final List<MenuItem> appMenuItems = [
       link: '/devices',
       icon: Icons.device_hub_outlined),
   const MenuItem(
+      title: "Analysis",
+      subtitle: "See your behavior",
+      link: '/analysis',
+      icon: Icons.data_thresholding_outlined),
+  const MenuItem(
       title: "Configuration",
       subtitle: "Change your preferences",
       link: "/configuration",

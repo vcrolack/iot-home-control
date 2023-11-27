@@ -60,7 +60,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           child: const Text('Main menu'),
         ),
         ...appMenuItems
-            .sublist(0, 3)
+            .sublist(0, 4)
             .map((menuItem) => NavigationDrawerDestination(
                   icon: Icon(menuItem.icon),
                   label: Text(menuItem.title),
@@ -74,7 +74,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
           child: Text('More options'),
         ),
         ...appMenuItems
-            .sublist(3, appMenuItems.length)
+            .sublist(4, appMenuItems.length)
             .map((menuItem) => NavigationDrawerDestination(
                   icon: Icon(menuItem.icon),
                   label: Text(menuItem.title),

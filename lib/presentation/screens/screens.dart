@@ -11,3 +11,6 @@ export 'configuration/configuration_screen.dart';
 
 /* DEVICES EXPORTS */
 export 'devices/devices_screen.dart';
+
+/* ANALYSIS DATA EXPORTS */
+export 'analysis-data/analysis_data_screen.dart';

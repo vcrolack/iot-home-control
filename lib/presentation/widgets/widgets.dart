@@ -1,3 +1,8 @@
+/* COMMON WIDGETS */
+export 'common/custom_drawer.dart';
+export 'common/list_products.dart';
+export 'common/custom_dialog.dart';
+
 /* AUTH WIDGETS */
 export 'auth/custom_appbar_auth.dart';
 
@@ -9,3 +14,6 @@ export 'home/devices_list.dart';
 /* DEVICES WIDGETS */
 export 'devices/device_box_preview.dart';
 export 'devices/device_list_item.dart';
+
+/* ANALYSIS DATA */
+export 'analysis-data/products_counter.dart';
