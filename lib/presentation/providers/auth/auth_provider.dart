@@ -40,7 +40,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
   void checkAuthStatus() {}
 
   Future<void> logout([String? errorMessage]) async {
-    // todo: clean token
+    await localStorageRepository.removeLoginUser();
     state = state.copyWith(
         authStatus: AuthStatus.notAuthenticated,
         user: null,
