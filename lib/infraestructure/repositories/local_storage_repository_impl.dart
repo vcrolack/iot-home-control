@@ -18,7 +18,7 @@ class LocalStorageRepositoryImpl extends LocalStorageRepository {
   }
 
   @override
-  Future<User> getLoginUser() {
+  Future<User?> getLoginUser() {
     return datasource.getLoginUser();
   }
 

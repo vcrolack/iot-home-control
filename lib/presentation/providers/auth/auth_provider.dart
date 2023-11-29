@@ -41,6 +41,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   void checkAuthStatus() async {
     final user = await localStorageRepository.getLoginUser();
+
+    if (user == null) return logout();
+
     final accessToken = user.accessToken;
 
     try {

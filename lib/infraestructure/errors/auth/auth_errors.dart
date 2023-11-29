@@ -1,4 +1,10 @@
-class WrongCredentials {}
+class WrongCredentials {
+  final String message;
+  WrongCredentials(this.message);
+
+  @override
+  String toString() => 'Credentials invalids: $message';
+}
 
 class InvalidToken implements Exception {
   final String message;

@@ -4,6 +4,6 @@ abstract class LocalStorageRepository {
   Future<void> savePreferences(UserPreferences preferences);
   Future<UserPreferences> getUserPreferences();
   Future<void> saveLoginUser(User user);
-  Future<User> getLoginUser();
+  Future<User?> getLoginUser();
   Future<bool> removeLoginUser();
 }

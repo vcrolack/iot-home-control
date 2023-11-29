@@ -34,7 +34,9 @@ class AwsAuthDatasource extends AuthDatasource {
       final user = UserMapper.fromJson(response.data);
       return user;
     } on DioException catch (e) {
-      if (e.response?.statusCode == 401) throw WrongCredentials();
+      if (e.response?.statusCode == 400) {
+        throw WrongCredentials('Invalid credentials');
+      }
 
       if (e.type == DioExceptionType.connectionTimeout) {
         throw ConnectionTimeout();

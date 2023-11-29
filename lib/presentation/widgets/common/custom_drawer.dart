@@ -1,39 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iot_home_control/config/menu/menu_items.dart';
 
-class CustomDrawer extends StatefulWidget {
+final navDrawerIndexProvider = StateProvider<int>((ref) => 0);
+
+class CustomDrawer extends ConsumerWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   const CustomDrawer({super.key, required this.scaffoldKey});
 
   @override
-  State<CustomDrawer> createState() => _CustomDrawerState();
-}
-
-class _CustomDrawerState extends State<CustomDrawer> {
-  int navDrawerIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final hasNotch = MediaQuery.of(context).viewPadding.top > 35;
     final colors = Theme.of(context).colorScheme;
     final textStyle = Theme.of(context).textTheme;
 
+    final navDrawerIndex = ref.watch(navDrawerIndexProvider);
+
     return NavigationDrawer(
       selectedIndex: navDrawerIndex,
       onDestinationSelected: (value) {
-        setState(() {
-          navDrawerIndex = value;
-        });
+        ref.watch(navDrawerIndexProvider.notifier).state = value;
         final menuItem = appMenuItems[value];
         if (menuItem.onTap != null) {
-          menuItem.onTap!(context);
+          menuItem.onTap!(context, ref);
         } else {
           context.push(menuItem.link!);
         }
 
-        widget.scaffoldKey.currentState?.closeDrawer();
+        scaffoldKey.currentState?.closeDrawer();
       },
       children: [
         Column(

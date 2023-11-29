@@ -87,8 +87,9 @@ class _LoginForm extends ConsumerWidget {
           height: 50,
         ),
         ElevatedButton(
-            onPressed: () =>
-                ref.read(loginFormProvider.notifier).onFormSubmit(),
+            onPressed: loginForm.isPosting
+                ? null
+                : ref.read(loginFormProvider.notifier).onFormSubmit,
             child: const Text('Log in')),
         const SizedBox(
           height: 16,

@@ -47,12 +47,10 @@ class IsarLocalStorageDatasource extends LocalStorageDatasource {
   }
 
   @override
-  Future<User> getLoginUser() async {
+  Future<User?> getLoginUser() async {
     final isar = await db;
 
     final User? user = await isar.users.where().findFirst();
-
-    if (user == null) throw UserNotFoundException('User not found');
 
     return user;
   }
@@ -61,7 +59,11 @@ class IsarLocalStorageDatasource extends LocalStorageDatasource {
   Future<bool> removeLoginUser() async {
     final isar = await db;
 
-    final bool isDeleted = await isar.users.where().deleteFirst();
+    bool isDeleted = false;
+
+    await isar.writeTxn(() async {
+      isDeleted = await isar.users.where().deleteFirst();
+    });
 
     return isDeleted;
   }

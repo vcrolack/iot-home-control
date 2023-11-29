@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:iot_home_control/presentation/providers/auth/auth_provider.dart';
 
 typedef ContextCallback = void Function(BuildContext context);
 
@@ -8,42 +10,43 @@ class MenuItem {
   final String subtitle;
   final String? link;
   final IconData icon;
-  final ContextCallback? onTap;
+  final Function(BuildContext, WidgetRef)? onTap;
 
-  const MenuItem(
-      {required this.title,
-      required this.subtitle,
-      this.link,
-      required this.icon,
-      this.onTap});
+  MenuItem({
+    required this.title,
+    required this.subtitle,
+    this.link,
+    required this.icon,
+    this.onTap,
+  });
 }
 
 /* LIST ITEM MENU */
 
 final List<MenuItem> appMenuItems = [
-  const MenuItem(
+  MenuItem(
     title: "Home",
     subtitle: "General view",
     link: "/",
     icon: Icons.home_outlined,
   ),
-  const MenuItem(
+  MenuItem(
     title: "Categories",
     subtitle: "Check our categories",
     link: "/categories",
     icon: Icons.category_outlined,
   ),
-  const MenuItem(
+  MenuItem(
       title: "Devices",
       subtitle: "Take a look your devices",
       link: '/devices',
       icon: Icons.device_hub_outlined),
-  const MenuItem(
+  MenuItem(
       title: "Analysis",
       subtitle: "See your behavior",
       link: '/analysis',
       icon: Icons.data_thresholding_outlined),
-  const MenuItem(
+  MenuItem(
       title: "Configuration",
       subtitle: "Change your preferences",
       link: "/configuration",
@@ -51,8 +54,9 @@ final List<MenuItem> appMenuItems = [
   MenuItem(
     title: "Log out",
     subtitle: "",
-    onTap: (context) {
+    onTap: (context, ref) {
       final goRouter = GoRouter.of(context);
+      ref.read(authProvider.notifier).logout();
       goRouter.pushReplacement('/auth/login');
     },
     icon: Icons.logout_outlined,
