@@ -15,7 +15,7 @@ class IsarLocalStorageDatasource extends LocalStorageDatasource {
   Future<Isar> openDB() async {
     if (Isar.instanceNames.isEmpty) {
       final dir = await getApplicationDocumentsDirectory();
-      return await Isar.open([UserPreferencesSchema],
+      return await Isar.open([UserPreferencesSchema, UserSchema],
           inspector: true, directory: dir.path);
     }
     return Future.value(Isar.getInstance());
@@ -79,7 +79,8 @@ class IsarLocalStorageDatasource extends LocalStorageDatasource {
 
         isar.users.putSync(user);
       });
-    } on IsarError {
+    } on IsarError catch (e) {
+      print('Error en la transacción de Isar: $e');
       throw DatabaseOperationException('Database transactions failed');
     }
   }

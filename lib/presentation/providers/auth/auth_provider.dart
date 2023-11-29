@@ -5,20 +5,26 @@ import 'package:iot_home_control/domain/repositories/repositories.dart';
 import 'package:iot_home_control/infraestructure/datasources/auth/aws_auth_datasource.dart';
 import 'package:iot_home_control/infraestructure/errors/errors.dart';
 import 'package:iot_home_control/infraestructure/repositories/auth/auth_repository_impl.dart';
+import 'package:iot_home_control/presentation/providers/storage/local_storage_provider.dart';
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
   final AuthRepository authRepository = AuthRepositoryImpl(AwsAuthDatasource());
-  return AuthNotifier(authRepository: authRepository);
+  return AuthNotifier(authRepository: authRepository, ref: ref);
 });
 
 class AuthNotifier extends StateNotifier<AuthState> {
   final AuthRepository authRepository;
+  late final LocalStorageRepository localStorageRepository;
 
-  AuthNotifier({required this.authRepository}) : super(AuthState());
+  AuthNotifier({required this.authRepository, required Ref ref})
+      : super(AuthState()) {
+    localStorageRepository = ref.read(localStorageRepositoryProvider);
+  }
 
   Future<void> loginUser(String email, String password) async {
     try {
       final user = await authRepository.login(email, password);
+      await localStorageRepository.saveLoginUser(user);
       _setLoggedUser(user);
     } on WrongCredentials {
       logout('Wrong credentials');
