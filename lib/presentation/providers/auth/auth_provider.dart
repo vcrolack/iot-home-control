@@ -19,12 +19,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
   AuthNotifier({required this.authRepository, required Ref ref})
       : super(AuthState()) {
     localStorageRepository = ref.read(localStorageRepositoryProvider);
+    checkAuthStatus();
   }
 
   Future<void> loginUser(String email, String password) async {
     try {
       final user = await authRepository.login(email, password);
-      await localStorageRepository.saveLoginUser(user);
+      // save token here maybe
       _setLoggedUser(user);
     } on WrongCredentials {
       logout('Wrong credentials');
@@ -35,9 +36,23 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-  void registerUser(String email, String password, String username) {}
+  Future<void> registerUser(
+      String email, String password, String username) async {}
 
-  void checkAuthStatus() {}
+  void checkAuthStatus() async {
+    final user = await localStorageRepository.getLoginUser();
+    final accessToken = user.accessToken;
+
+    try {
+      final status = await authRepository.checkAuthStatus(accessToken);
+
+      if (!status) return logout();
+
+      _setLoggedUser(user);
+    } catch (e) {
+      logout();
+    }
+  }
 
   Future<void> logout([String? errorMessage]) async {
     await localStorageRepository.removeLoginUser();
@@ -47,8 +62,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
         errorMessage: errorMessage);
   }
 
-  void _setLoggedUser(User user) {
-    // todo: save token on isar db
+  void _setLoggedUser(User user) async {
+    await localStorageRepository.saveLoginUser(user);
     state = state.copyWith(
         authStatus: AuthStatus.authenticated, user: user, errorMessage: '');
   }

@@ -8,8 +8,8 @@ class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl(this.datasource);
 
   @override
-  Future<User> checkAuthStatus(String token) {
-    return datasource.checkAuthStatus(token);
+  Future<bool> checkAuthStatus(String accessToken) {
+    return datasource.checkAuthStatus(accessToken);
   }
 
   @override

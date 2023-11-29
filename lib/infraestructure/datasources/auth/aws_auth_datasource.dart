@@ -7,9 +7,22 @@ import 'package:iot_home_control/infraestructure/mappers/user_mapper.dart';
 
 class AwsAuthDatasource extends AuthDatasource {
   @override
-  Future<User> checkAuthStatus(String token) {
-    // todo: implement checkAuthStatus
-    throw UnimplementedError();
+  Future<bool> checkAuthStatus(String accessToken) async {
+    try {
+      final response = await dio.get('/auth/check-status',
+          options: Options(headers: {'Authorization': 'Bearer $accessToken'}));
+      return response.data['isValid'];
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 400) throw InvalidToken('Invalid token');
+
+      if (e.type == DioExceptionType.connectionTimeout) {
+        throw ConnectionTimeout();
+      }
+
+      throw CustomError(statusCode: 500, message: 'Unxpected error');
+    } catch (error) {
+      throw CustomError(statusCode: 500, message: 'Unxpected error');
+    }
   }
 
   @override
