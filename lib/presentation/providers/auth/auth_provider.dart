@@ -6,7 +6,7 @@ import 'package:iot_home_control/infraestructure/datasources/auth/aws_auth_datas
 import 'package:iot_home_control/infraestructure/errors/errors.dart';
 import 'package:iot_home_control/infraestructure/repositories/auth/auth_repository_impl.dart';
 
-final authNotifier = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
+final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
   final AuthRepository authRepository = AuthRepositoryImpl(AwsAuthDatasource());
   return AuthNotifier(authRepository: authRepository);
 });
