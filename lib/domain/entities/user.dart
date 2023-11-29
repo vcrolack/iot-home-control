@@ -1,4 +1,11 @@
+import 'package:isar/isar.dart';
+
+part 'user.g.dart';
+
+@collection
 class User {
+  Id? isarId;
+
   final String id;
   final bool emailVerified;
   final String customUserId;
