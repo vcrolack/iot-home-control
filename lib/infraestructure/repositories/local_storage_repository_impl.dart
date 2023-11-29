@@ -16,4 +16,19 @@ class LocalStorageRepositoryImpl extends LocalStorageRepository {
   Future<UserPreferences> getUserPreferences() {
     return datasource.getUserPreferences();
   }
+
+  @override
+  Future<User> getLoginUser() {
+    return datasource.getLoginUser();
+  }
+
+  @override
+  Future<bool> removeLoginUser() {
+    return datasource.removeLoginUser();
+  }
+
+  @override
+  Future<void> saveLoginUser(User user) {
+    return datasource.saveLoginUser(user);
+  }
 }
