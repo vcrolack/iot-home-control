@@ -14,7 +14,7 @@ class UserMapper {
       customUserId: attributes['sub'] ?? '',
       email: attributes['email'] ?? '',
       username: json['additionalInfo']['NombreUsuario'] ?? '',
-      location: json['additionalInfo']['Ubicacion'],
+      location: json['additionalInfo']['Ubicacion'] ?? '',
       notificationSettings:
           json['additionalInfo']['ConfiguracionNotificacion'] ?? '',
       cognitoUserId: json['additionalInfo']['CognitoUserId'] ?? '',
