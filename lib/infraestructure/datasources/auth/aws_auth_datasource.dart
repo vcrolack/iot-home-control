@@ -8,7 +8,7 @@ import 'package:iot_home_control/infraestructure/mappers/user_mapper.dart';
 class AwsAuthDatasource extends AuthDatasource {
   @override
   Future<User> checkAuthStatus(String token) {
-    // TODO: implement checkAuthStatus
+    // todo: implement checkAuthStatus
     throw UnimplementedError();
   }
 
@@ -35,7 +35,7 @@ class AwsAuthDatasource extends AuthDatasource {
 
   @override
   Future<User> register(String username, String email, String password) {
-    // TODO: implement register
+    // todo: implement register
     throw UnimplementedError();
   }
 }
