@@ -13,7 +13,8 @@ class RegisterScreen extends StatelessWidget {
         appBar: CustomAppBarAuth(
           title: 'Join us!',
           subtitle: 'Enter your personal information',
-          colorsGradient: [const Color(0xffbc9cf7), const Color(0xff54bbb9)],
+          automaticallyImplyLeading: false,
+          colorsGradient: const [Color(0xffbc9cf7), Color(0xff54bbb9)],
         ),
         body: Column(children: [
           const _RegisterForm(),

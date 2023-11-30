@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:iot_home_control/presentation/providers/auth/auth_provider.dart';
 
 typedef ContextCallback = void Function(BuildContext context);
@@ -55,9 +54,7 @@ final List<MenuItem> appMenuItems = [
     title: "Log out",
     subtitle: "",
     onTap: (context, ref) {
-      final goRouter = GoRouter.of(context);
       ref.read(authProvider.notifier).logout();
-      goRouter.pushReplacement('/auth/login');
     },
     icon: Icons.logout_outlined,
   )

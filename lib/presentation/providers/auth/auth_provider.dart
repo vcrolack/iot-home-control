@@ -25,7 +25,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
   Future<void> loginUser(String email, String password) async {
     try {
       final user = await authRepository.login(email, password);
-      // save token here maybe
       _setLoggedUser(user);
     } on WrongCredentials {
       logout('Wrong credentials');

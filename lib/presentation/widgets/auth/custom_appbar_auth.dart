@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class CustomAppBarAuth extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String subtitle;
+  final bool automaticallyImplyLeading;
   final List<Color> colorsGradient;
 
   const CustomAppBarAuth(
       {super.key,
       required this.title,
       required this.subtitle,
+      required this.automaticallyImplyLeading,
       required this.colorsGradient})
       : assert(colorsGradient.length == 2, 'The proporty must have 2 colors');
 
@@ -18,6 +20,7 @@ class CustomAppBarAuth extends StatelessWidget implements PreferredSizeWidget {
 
     return AppBar(
       toolbarHeight: appBarHeigth,
+      automaticallyImplyLeading: automaticallyImplyLeading,
       backgroundColor: Colors.red,
       title: Column(
         mainAxisAlignment: MainAxisAlignment.center,

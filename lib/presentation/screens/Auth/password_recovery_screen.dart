@@ -12,6 +12,7 @@ class PasswordRecoveryScreen extends StatelessWidget {
         appBar: CustomAppBarAuth(
             title: 'Get a new pass',
             subtitle: 'Write your email and waiting us!',
+            automaticallyImplyLeading: false,
             colorsGradient: const [Color(0xffF45DB9), Color(0xff54bbb9)]),
         body: const Column(children: [
           _RecoveryPasswordForm(),

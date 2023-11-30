@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBarAuth(
             title: 'Login',
+            automaticallyImplyLeading: false,
             subtitle: 'Enter your credentials to continue',
             colorsGradient: const [Color(0xffbc9cf7), Color(0xff54bbb9)]),
         body: SingleChildScrollView(

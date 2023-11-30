@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:iot_home_control/config/constants/auth_status.dart';
@@ -25,7 +26,7 @@ final goRouterProvider = Provider((ref) {
       GoRoute(
           name: 'auth',
           path: '/auth',
-          builder: (context, state) => const LoginScreen(),
+          builder: (context, state) => const SizedBox.shrink(),
           routes: authRoutes),
       GoRoute(
           name: ConfigurationScreen.name,

@@ -62,7 +62,8 @@ class IsarLocalStorageDatasource extends LocalStorageDatasource {
     bool isDeleted = false;
 
     await isar.writeTxn(() async {
-      isDeleted = await isar.users.where().deleteFirst();
+      await isar.users.clear();
+      isDeleted = true;
     });
 
     return isDeleted;
@@ -73,13 +74,13 @@ class IsarLocalStorageDatasource extends LocalStorageDatasource {
     final isar = await db;
 
     try {
-      isar.writeTxnSync(() {
+      isar.writeTxn(() async {
         if (user.isarId == null) {
-          isar.users.putSync(user);
+          await isar.users.put(user);
           return;
         }
 
-        isar.users.putSync(user);
+        await isar.users.put(user);
       });
     } on IsarError catch (e) {
       print('Error en la transacción de Isar: $e');
