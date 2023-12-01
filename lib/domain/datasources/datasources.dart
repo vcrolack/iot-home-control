@@ -3,3 +3,6 @@ export 'local_storage_datasource.dart';
 
 /* AUTH DATASOURCES */
 export 'auth/auth_datasource.dart';
+
+/* PRODUCTS DATASOURCES */
+export 'products/products_datasource.dart';

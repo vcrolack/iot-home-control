@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iot_home_control/presentation/mocks/constants/products_constant.dart';
 
 class CustomDialog extends StatelessWidget {
   final String title;
   final BuildContext context;
   final Widget? content;
-  final List? items;
+  final List items;
   final List<String> actions;
   final String textButton;
 
@@ -14,7 +13,7 @@ class CustomDialog extends StatelessWidget {
       required this.title,
       required this.context,
       this.content,
-      this.items,
+      required this.items,
       required this.actions,
       required this.textButton});
 
@@ -28,12 +27,12 @@ class CustomDialog extends StatelessWidget {
               width: double.maxFinite,
               child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: products.length,
+                  itemCount: items.length,
                   itemBuilder: (context, index) {
-                    final product = products[index];
+                    final item = items[index];
                     return ListTile(
-                      title: Text(product.name),
-                      subtitle: Text('Quantity: ${product.quantity}'),
+                      title: Text(item.name),
+                      subtitle: Text('Quantity: ${item.quantity}'),
                       leading: const Icon(Icons.shopping_cart),
                     );
                   }),
