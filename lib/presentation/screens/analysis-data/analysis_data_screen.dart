@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iot_home_control/presentation/mocks/constants/products_constant.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iot_home_control/presentation/providers/providers.dart';
 import 'package:iot_home_control/presentation/widgets/widgets.dart';
 
 class AnalysisDataScreen extends StatelessWidget {
@@ -13,15 +14,50 @@ class AnalysisDataScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Analysis'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-        child: Column(children: [
-          const ProductsCounter(
-            quantity: 5,
-          ),
-          Flexible(child: ListProducts(label: 'Pantry', products: products)),
-        ]),
-      ),
+      body: const _AnalysisView(),
+    );
+  }
+}
+
+class _AnalysisView extends ConsumerStatefulWidget {
+  const _AnalysisView();
+
+  @override
+  _AnalysisViewState createState() => _AnalysisViewState();
+}
+
+class _AnalysisViewState extends ConsumerState {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(productsProvider.notifier).loadpage();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> onRefresh() async {
+    await ref.read(productsProvider.notifier).loadpage();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final productState = ref.watch(productsProvider);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+      child: Column(children: [
+        ProductsCounter(
+          quantity: productState.products.length,
+        ),
+        Flexible(
+            child: RefreshIndicator(
+                onRefresh: () => onRefresh(),
+                child: ListProducts(
+                    label: 'Pantry', products: productState.products))),
+      ]),
     );
   }
 }

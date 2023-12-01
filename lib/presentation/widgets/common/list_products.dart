@@ -12,7 +12,7 @@ class ListProducts extends StatelessWidget {
       {super.key,
       required this.label,
       required this.products,
-      this.itemCount = 5});
+      this.itemCount = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,8 @@ class ListProducts extends StatelessWidget {
               ),
               const Spacer(),
               CustomDialog(
-                  title: 'Daily use',
+                  title: 'All products',
+                  items: products,
                   context: context,
                   actions: const ['Close'],
                   textButton: 'See all')
@@ -42,7 +43,7 @@ class ListProducts extends StatelessWidget {
         ),
         Expanded(
           child: ListView.builder(
-            itemCount: itemCount,
+            itemCount: products.length,
             itemBuilder: (BuildContext context, int index) {
               if (index < products.length) {
                 Product product = products[index];
