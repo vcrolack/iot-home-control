@@ -30,7 +30,8 @@ class _AnalysisViewState extends ConsumerState {
   @override
   void initState() {
     super.initState();
-    ref.read(productsProvider.notifier).loadpage();
+
+    Future.microtask(() => ref.read(productsProvider.notifier).loadpage());
   }
 
   @override
